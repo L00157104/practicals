@@ -100,3 +100,64 @@ managers_data
 str(managers_data)
 # view data of data frame as an excel format
 View(managers_data)
+
+
+# convert date variable from Chr to date type
+# using dd/mm/yy format
+
+managers_data$Date
+converted_date <- as.Date(managers_data$Date, "%m/%d/%y")
+converted_date
+
+# structure of a field
+str(converted_date)
+
+# overwrite the current date var with new date var
+managers_data$Date <- converted_date
+str(managers_data$Date)
+str(managers_data)
+
+
+# dealing with missing data
+
+# listwise deletion = remove any rows that contains NA
+# Listwise(managers_data, Summary = "NA")
+
+managers_data
+new_managers_data <- na.omit(managers_data)
+new_managers_data
+
+# use complete cases
+# it is TRUE for each row which is complete and if we have missing values it will show FALSE
+
+complete_managers_data <- complete.cases(managers_data)
+complete_managers_data
+
+# it will give sum of TRUE always
+sum(complete_managers_data)
+
+# list rows that do not have missing vals
+complete_managers_data <- managers_data[complete.cases(managers_data),]
+complete_managers_data
+
+# list rows with missing values
+managers_data[!complete.cases(managers_data),]
+
+# show summary of all missing vals in a variable
+sum(is.na(managers_data$Age))
+sum(is.na(managers_data$`Mean Value`))
+
+# install and use Mice package to show
+# missing vars in the managers data frame
+
+install.packages("mice")
+library(mice)
+md.pattern(managers_data)
+
+# the VIM package also show missing values
+install.packages("VIM")
+library(VIM)
+missing_values <- aggr(managers_data, prop = FALSE, numbers = TRUE)
+
+# show summary of the content of missing_values
+summary(missing_values)
