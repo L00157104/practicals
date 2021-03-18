@@ -3,7 +3,7 @@
 # creating vector with c
 date_col <- c("10/15/18", "01/11/18", "10/21/18", "10/28/18", "05/01/18")
 country_col <- c("US","US","IRL","IRL","IRL")
-gender_col <- c("M", "F", "F", "M", "Fage")
+gender_col <- c("M", "F", "F", "M", "F")
 age_col <- c(32, 45, 25, 39, 99)
 q1_col <- c(5, 3, 3, 3, 2)
 q2_col <- c(4, 5, 5, 3, 2)
@@ -68,5 +68,5 @@ agecat
 managers_data$age_cat <- agecat
 managers_data
 
-str(managers_data)
+#str(managers_data)
 
