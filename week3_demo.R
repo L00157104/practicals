@@ -81,3 +81,36 @@ new_data <- subset(
   managers_data, Age > 25 | Gender == "M", 
                    select = Gender:Q4)
 new_data
+
+# Random Sampling 
+# sample 3 records from managers data frame
+# x = 
+new_sample <- managers_data[sample(1:nrow(managers_data), 3, replace = FALSE),]
+new_sample
+
+# Can we sample 10 records from data frame?
+# with condition TRUE we can sample same data multiple times 
+# but FALSE can allow 1 time to sample same data
+managers_data
+new_sample <- managers_data[sample(1:nrow(managers_data), 10, replace = TRUE),]
+new_sample
+
+# detach
+detach(managers_data)
+
+# sorting data by age
+attach(managers_data)
+my_data <- managers_data[order(Age), ]
+my_data
+
+
+# sort by genger and then age within each gender 
+# and sort in data frame called sorted data
+
+sorted_data <- managers_data[order(Gender, Age), ]
+sorted_data
+
+
+# save the random sample file to a .csv file
+write.csv(new_sample, file = "Random_Sample.csv")
+
